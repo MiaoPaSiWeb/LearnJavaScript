@@ -1,0 +1,16 @@
+ECMAScript 变量是松散类型的，意思是变量可以用于保存任何类型的数据。每个变量只不过是一 个用于保存任意值的命名占位符。有 3 个关键字可以声明变量:var、const 和 let。其中，var 在 ECMAScript 的所有版本中都可以使用，而 const 和 let 只能在 ECMAScript 6 及更晚的版本中使用。
+
+### 变量作用域
+1. var 声明作用域
+关键的问题在于，使用 var 操作符定义的变量会成为包含它的函数的局部变量。比如，使用 var 在一个函数内部定义一个变量，就意味着该变量将在函数退出时被销毁:
+function test() {
+var message = "hi"; // 局部变量
+}
+test();
+console.log(message); // 出错!
+这里，message 变量是在函数内部使用 var 定义的。函数叫 test()，调用它会创建这个变量并给 它赋值。调用之后变量随即被销毁，因此示例中的最后一行会导致错误。不过，在函数内定义变量时省 略 var 操作符，可以创建一个全局变量:
+    function test() {
+message = "hi"; // 全局变量 }
+test();
+console.log(message); // "hi"
+去掉之前的 var 操作符之后，message 就变成了全局变量。只要调用一次函数 test()，就会定义 这个变量，并且可以在函数外部访问到。
